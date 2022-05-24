@@ -1,0 +1,27 @@
+---
+format: 
+  revealjs:
+    slide-number: true
+    preview-links: auto
+    css: "css/iadr.css"
+    parallax-background-image: img/causal.svg
+    parallax-background-size: "2048px 1000px"
+    parallax-background-horizontal: 200
+    parallax-background-vertical: 100
+    footer: "2022 IADR/APR General Session"
+
+editor: visual
+---
+
+##  {.red .ti visibility="uncounted"}
+
+mkllk
+
+::: footer
+:::
+
+------------------------------------------------------------------------
+
+mbmnmb
+
+------------------------------------------------------------------------
