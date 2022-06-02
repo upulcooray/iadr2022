@@ -9,16 +9,35 @@ format:
     parallax-background-horizontal: 200
     parallax-background-vertical: 100
     footer: "2022 IADR/APR General Session"
-
+width: 1200
 editor: visual
 ---
 
-##  {.red .ti visibility="uncounted"}
+##  {#title visibility="uncounted"}
 
-mkllk
-
-::: footer
+::: {.ti style="font-weight: bold; letter-spacing: 5px; line-height: 50%;"}
+Impact of Poverty on Frequent Dental Pain Among US Adults
 :::
+
+<hr style="opacity:0.7; ">
+
+::: {.cen style="font-size: 0.8em;"}
+Upul Cooray $^🎙️$ $^1$, Kenji Takeuchi$^1$, Ken Osaka$^1$ and Jun Aida$^2$
+:::
+
+::: {style="font-size: 0.6em;text-align:left;"}
+$^1$*Graduate school of dentistry, Tohoku University, Japan.*
+
+$^2$*Tokyo Medical and Dental University, Japan.*
+:::
+
+🎙️ 🇱🇰 **Upul Cooray**
+
+------------------------------------------------------------------------
+
+adsd
+
+mkjkmm
 
 ------------------------------------------------------------------------
 

@@ -4,7 +4,7 @@
     display:            block;
     border:             none;
     background-color:   #7D3C98;
-    height:             0.2em;
+    height:             0.1em;
     margin: 5px auto;
 
   }
@@ -101,15 +101,19 @@
     bottom: 7px;
     } 
 
+
 .ti {
 
-    font-size: 100px;
+    font-size: 2.3em;
     text-align: center;
-    font-weight: bold;
-
+    line-height: 0.5em;
+    
 }
 
-
+.cen{
+  
+  text-align: center;
+}
 
 
 
