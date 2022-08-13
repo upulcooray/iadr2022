@@ -2,21 +2,36 @@
 format: 
   revealjs:
     slide-number: true
-    preview-links: auto
-    css: "css/iadr.css"
+    incremental: false
+    standalone: true
+    preview-links: true
+    css: "css/iadr2022.css"
     parallax-background-image: img/causal.svg
-    parallax-background-size: "2048px 1000px"
+    parallax-background-size: "2000x 1400px"
     parallax-background-horizontal: 200
-    parallax-background-vertical: 100
+    parallax-background-vertical: 0
     footer: "2022 IADR/APR General Session"
-width: 1200
-editor: visual
+max-scale: 3
 ---
 
 ##  {#title visibility="uncounted"}
 
 ::: {.ti style="font-weight: bold; letter-spacing: 5px; line-height: 50%;"}
-Impact of Poverty on Frequent Dental Pain Among US Adults
+Impact of Poverty on
+
+Frequent Dental Pain
+
+Among US Adults
+:::
+
+![](img/tu-logo.png){#logo .absolute top="-1%" left="-6%" height="auto" width="120"}
+
+![](img/IADR_BEHSR.png){.absolute bottom="-1%" right="-5%" width="180"}
+
+![](img/iadr-logo.png){.absolute bottom="-1%" right="17%" width="300"}
+
+::: {.cen .red .f-20 style="font-weight: bold;"}
+***Using Modified Treatment Policy Approach***
 :::
 
 <hr style="opacity:0.7; ">
@@ -31,16 +46,443 @@ $^1$*Graduate school of dentistry, Tohoku University, Japan.*
 $^2$*Tokyo Medical and Dental University, Japan.*
 :::
 
+<br/>
+
 🎙️ 🇱🇰 **Upul Cooray**
 
+::: notes
+Hello again everyone!
+
+I am Upul Cooray
+
+I am a PhD student in TOHOKU university
+
+Today I will present our analysis on the impact of poverty on Frequent dental pain among US adults
+:::
+
 ------------------------------------------------------------------------
 
-adsd
+## [Background]{.title-deco .bg-b}
 
-mkjkmm
+::: {.absolute left="-5%" top="23%" height="auto" width="35%"}
+![](img/back.jpg) [*Image from https://wordwenches.typepad.com/*]{.grey .f-12}
+:::
+
+::: {.absolute .f-30 right="0%" top="14%" width="70%"}
+::: {.bg-b .lrb-r}
+The association between economic disadvantage and adverse oral health outcomes is well known
+
+::: f-12
+The relationship between income and oral health: a critical review A Singh, MA Peres, RG Watt - Journal of dental research, 2019
+:::
+:::
+
+<br/>
+
+::: lrb-b
+However, evidence for this association based on [**causal inference**]{.red} is limited
+:::
+
+<br/>
+
+::: {.bg-r .lrb-r .fragment .cen}
+We aimed to obtain a [**causal estimate**]{.blue} of the impact of poverty on the [**prevalence of frequent dental pain**]{.blue} among the US adults.
+:::
+:::
 
 ------------------------------------------------------------------------
 
-mbmnmb
+## [Methods]{.title-deco .bg-g} {.li-m}
+
+::: sub
+Data & participants
+:::
+
+::: {.absolute right="10%" top="20%"}
+![](img/nhanes-logo.png)
+:::
+
+::: {.f-30 .absolute top="20%"}
+-   Data from 2013-2014, 2015-2016, and 2017-2018 cycles of the National Health and Nutrition Examination Survey(NHANES)
+
+-   Dentate (edentulous individuals were excluded)
+
+-   Age 21 to 70
+
+-   **N= 8840**
+
+-   Missing data were imputed using random forest multiple imputation generating 10 datasets
+:::
+
+::: notes
+We used data from 3 NHANES cycles from 2013 to 2018
+
+edentulous individuals were excluded as our outcome is dental pain
+
+and we restricted the study population include only adults
+
+Our final analitical sample was 8840
+
+and the missing data were imputed using rf multiple imputation generating 10 data sets
+:::
 
 ------------------------------------------------------------------------
+
+## [Methods]{.title-deco .bg-r}
+
+::: sub
+Study variables
+:::
+
+::: panel-tabset
+### Exposure {.f-30 .li-m}
+
+**💵 Poverty Income Ratio (PIR)**
+
+-   `Family income`/ `poverty threshold`
+
+-   Continuous variable (Range 0-5)
+
+-   **PIR \< 1** : In poverty
+
+-   median PIR : Threshold for the relative poverty
+
+-   People with \> 5 PIR are lumped together in the data
+
+::: {.absolute top="65%"}
+![](img/expo1.png)
+:::
+
+::: {.absolute top="65%" right="10%"}
+![](img/expo2.png)
+:::
+
+::: {.icon .absolute .blink top="85%" right="70%"}
+:::
+
+### Outcome {.li-m .f-30}
+
+**😧 Frequent dental pain**
+
+-   Categories: [Very often/ Fairly often/]{.bg-r} [Occasionally/ Hardly ever/ Never]{.bg-g}
+
+-   Dichotomised : \[Very often/ Fairly often\] = 1
+
+### Covariates {.f-30 .li-m}
+
+-   Age, Sex, Education, Ethnicity
+
+-   Marital status, household size
+
+-   Number of teeth, Number of carious teeth
+
+::: {.absolute .fragment top="20%" right="-5%"}
+![](img/dag-2.png)
+:::
+:::
+
+::: notes
+Poverty income ratio was the exposure
+
+Which is calculated by dividing household income by poverty threshold for the particular year
+
+This is a continuous variable ranging from 0 to 5
+
+and there are couple of important thresholds associates with PIR
+
+PIR = 1 is the threshold for absolute poverty
+
+and the median value of the PIR is considered the threshold for relative poverty
+
+In NhanES for some reason all the participants who has PIR of 5 or more are lumped toghther in the data.
+
+therefore we exculded PIR=5 participants to obtain a normal looking exposure.
+
+\[go to outcome tab\]
+
+The outcome was frequent dental pain,
+
+we derived a binary variable by grouping individuals who experienced dental pain fairly often or more
+
+\[go to cova tab\]
+
+We adjusted for variety of covaritates. Estimates I present here are adjusted for number of remaining teeth and number of carious teeth teeth as well..
+
+but We might remove them later because i feel like these are more of mediators
+
+\[go to next slide\]
+:::
+
+------------------------------------------------------------------------
+
+## [Methods]{.title-deco .bg-g}
+
+::: sub
+Statistical analysis- main steps
+:::
+
+::: {.f-25 .nonincremental style="padding-top:20%;"}
+[Step 1:]{.green} Defined the causal effect using MTP framework by [**shifting the observed exposure**]{.red} to different hypothetical scenarios
+
+[Step 2:]{.green} Estimate the population level expected outcome under different scenarios specified in the previous step
+
+::: bg-b
+> [Targeted minimum loss-based estimation (TMLE)]{.red} in combination data adaptive regressions (machine learning algorithms) were used to estimate outcomes.
+:::
+
+[Step 3:]{.green} [Contrast the outcome estimates]{.red} of hypothetical interventions against the outcome estimate under observed exposure level to calculate odds ratios.
+:::
+
+::: notes
+I think majority of attendees today joined efiforum as well.. So I will go through statistical analysis part bit quicker
+
+It was consist of three main steps
+
+first defining the causal effect by shifting the observed exposure
+
+second estimation of expected outcome using TMLE under shifted exposure
+
+finallly, contrasting outcome estiamtes to shifted exposure against outcome estimate with observed exposure
+:::
+
+------------------------------------------------------------------------
+
+## [Methods]{.title-deco .bg-y}
+
+::: sub
+Step 1- Shifting the observed exposure
+:::
+
+::: {.f-15 .absolute left="-5%" top="12%"}
+🌎 [**Hypothetical scenarios to improve the PIR among the participants who are below absolute poverty line**]{.green .f-18}
+
+**Scenario 1:** What if we improve PIR by 25% (upper bounded by PIR==1)
+
+|              |      |                |                |      |      |      |      |      |      |      |                |                |                |                |                |       |
+|:----|----:|----:|----:|----:|----:|----:|----:|----:|----:|----:|----:|----:|----:|----:|----:|-----|
+| Observed PIR | 2.43 | [0.33]{.blink} | [0.78]{.blink} | 3.36 | 2.96 | 1.38 | 2.18 | 2.14 | 3.27 | 2.61 | [0.33]{.blink} | [0.15]{.blink} | [0.47]{.blink} | [0.36]{.blink} | [0.77]{.blink} | ... N |
+| Improve 25%  | 2.43 | [0.41]{.c-num} | [0.98]{.c-num} | 3.36 | 2.96 | 1.38 | 2.18 | 2.14 | 3.27 | 2.61 | [0.41]{.c-num} | [0.19]{.c-num} | [0.59]{.c-num} | [0.45]{.c-num} | [0.96]{.c-num} | ... N |
+
+**Scenario 2:** What if we improve PIR by 50% (upper bounded by PIR==1)
+
+**Scenario 3:** What if we improve PIR by 75% (upper bounded by PIR==1)
+
+**Scenario 4:** What if we doubled the PIR (upper bounded by PIR==1)
+
+|              |      |                |                |      |      |      |      |      |      |      |                |                |                |                |                |       |
+|:----|----:|----:|----:|----:|----:|----:|----:|----:|----:|----:|----:|----:|----:|----:|----:|-----|
+| Observed PIR | 2.43 | [0.33]{.blink} | [0.78]{.blink} | 3.36 | 2.96 | 1.38 | 2.18 | 2.14 | 3.27 | 2.61 | [0.33]{.blink} | [0.15]{.blink} | [0.47]{.blink} | [0.36]{.blink} | [0.77]{.blink} | ... N |
+| Improve x2   | 2.43 | [0.66]{.c-num} | [1.00]{.c-num} | 3.36 | 2.96 | 1.38 | 2.18 | 2.14 | 3.27 | 2.61 | [0.66]{.c-num} | [0.30]{.c-num} | [0.94]{.c-num} | [0.72]{.c-num} | [1.00]{.c-num} | ... N |
+
+<br/>
+
+🌎 [**Hypothetical scenarios to improve the PIR among the participants who are below relative poverty line (below median PIR)**]{.blue .f-18}
+
+**Scenario 5:** What if we improve PIR by 25% (upper bounded by PIR==median)
+
+|              |      |                |                |      |      |                |      |      |      |      |                |                |                |                |                |       |
+|:----|----:|----:|----:|----:|----:|----:|----:|----:|----:|----:|----:|----:|----:|----:|----:|-----|
+| Observed PIR | 2.43 | [0.33]{.blink} | [0.78]{.blink} | 3.36 | 2.96 | [1.38]{.blink} | 2.18 | 2.14 | 3.27 | 2.61 | [0.33]{.blink} | [0.15]{.blink} | [0.47]{.blink} | [0.36]{.blink} | [0.77]{.blink} | ... N |
+| Improve 25%  | 2.43 | [0.41]{.c-num} | [0.98]{.c-num} | 3.36 | 2.96 | [1.70]{.c-num} | 2.18 | 2.14 | 3.27 | 2.61 | [0.41]{.c-num} | [0.19]{.c-num} | [0.59]{.c-num} | [0.45]{.c-num} | [0.96]{.c-num} | ... N |
+
+**Scenario 6:** What if we improve PIR by 50% (upper bounded by PIR==median)
+
+**Scenario 7:** What if we improve PIR by 75% (upper bounded by PIR==median)
+
+**Scenario 8:** What if we doubled the PIR (upper bounded by PIR==median)
+
+|              |      |                |                |      |      |                |      |      |      |      |                |                |                |                |                |       |
+|:----|----:|----:|----:|----:|----:|----:|----:|----:|----:|----:|----:|----:|----:|----:|----:|-----|
+| observed PIR | 2.43 | [0.33]{.blink} | [0.78]{.blink} | 3.36 | 2.96 | [1.38]{.blink} | 2.18 | 2.14 | 3.27 | 2.61 | [0.33]{.blink} | [0.15]{.blink} | [0.47]{.blink} | [0.36]{.blink} | [0.77]{.blink} | ... N |
+| improve x2   | 2.43 | [0.66]{.c-num} | [1.56]{.c-num} | 3.36 | 2.96 | [1.70]{.c-num} | 2.18 | 2.14 | 3.27 | 2.61 | [0.66]{.c-num} | [0.30]{.c-num} | [0.94]{.c-num} | [0.72]{.c-num} | [1.54]{.c-num} | ... N |
+:::
+
+::: notes
+In this study we designed targeted interventions at two different levels
+
+first we improved the poverty income ratio only among participants who were below absolute poverty threshold
+
+we implemented screnarios where they increase the PIR by 25% the 50%, 75% , and finally doubled the PIR. all these intervention were upper bounded by absolute poverty threshold
+
+meaning \[zoom\]
+
+for example, this individuals observed PIR is point 78 , eventhough we are doubling the PIR in this intervention this person will improve only upto pir = 1
+
+Then we did the same for the below relative poverty line participants
+
+THe median pir  of our sample was 1.7
+:::
+
+------------------------------------------------------------------------
+
+## [Methods]{.title-deco .bg-r}
+
+::: sub
+Step 2- Estimating outcome under shifted exposures
+:::
+
+::: {fig-align="center" top="12%"}
+![](img/tmle1.png){width="700px" height="auto"}
+:::
+
+::: {.absolute .fragment right="11%" top="32%" width="350px" height="auto"}
+![](img/tmle2.png)
+:::
+
+::: {.fragment .absolute bottom="-1%"}
+[*Katherine Hoffman* has witten some excellent blog posts to understand TMLE: https://www.khstats.com](https://www.khstats.com){.grey .f-15}
+:::
+
+::: notes
+Again I explained this in the epi form
+
+I this study also we used a stack of of machine learning algorytms in gcom and propensity score steps
+:::
+
+------------------------------------------------------------------------
+
+## [Methods]{.title-deco .bg-b}
+
+::: sub
+Step 3- Contrast outcome estimates to obtain the causal estimand
+:::
+
+<br><br>
+
+::: f-20
+Population level estimates for [intervention among **PIR\<1**]{.red}
+
+> *Observed* vs 25% improvement
+
+> *Observed* vs 50% improvement
+
+> *Observed* vs 75% improvement
+
+> *Observed* vs x2 (100%) improvement
+
+<br/>
+
+Population level estimates for [intervention among **PIR\<Median**]{.red}
+
+> *Observed* vs 25% improvement
+
+> *Observed* vs 50% improvement
+
+> *Observed* vs 75% improvement
+
+> *Observed* vs x2 (100%) improvement
+:::
+
+::: notes
+After all those interventions were able to observe how the prevalence of frequent dental pain change with each intervention
+:::
+
+------------------------------------------------------------------------
+
+## [Results]{.title-deco .bg-g footer="flase"}
+
+::: sub
+Contrasting outcome estimates
+:::
+
+::: {.absolute .f-15 top="15%" left="-6%" width="50%"}
+| [**Contrast**]{.blue}            | OR \[95% CI\]      | P value |
+|:---------------------------------|:-------------------|:--------|
+| Intervention on absolute         |                    |         |
+| **Observed** vs S1               | 1.02 \[0.92-1.12\] | 0.641   |
+| **Observed** vs S2               | 1.08 \[0.91-1.26\] | 0.376   |
+| **Observed** vs S3               | 1.11 \[0.90-1.31\] | 0.324   |
+| **Observed** vs S4               | 1.08 \[0.89-1.27\] | 0.442   |
+| Intervention in relative poverty |                    |         |
+| **Observed** vs S5               | 0.82 \[0.76-0.88\] | 0.000   |
+| **Observed** vs S6               | 0.74 \[0.62-0.86\] | 0.001   |
+| **Observed** vs S7               | 0.65 \[0.50-0.79\] | 0.000   |
+| **Observed**v s S8               | 0.57 \[0.38-0.75\] | 0.000   |
+
+<br/>
+
+::: {.absolute .bg-g .infobox .lrb-r .f-12 fragment-index="1" width="70%"}
+✔️ Adjusted for covariates
+
+✔️ Appropriately weighted for NHANES svy design
+
+✔️ 10 imputed sets combined using Rubin's rules
+
+✔️ TMLE estimates were cross validated (x10 folds)
+:::
+:::
+
+::: {.absolute right="-6%" top="7%" width="700px" height="auto"}
+![](img/res1.tiff)
+:::
+
+::: notes
+THis is how the results looked like
+
+Interventions only among those in absolute poverty did not have a significant effect on the observed level of frequent dental pain prevalence.
+
+However, intervention on reducing relative poverty showed a significant reduction in the likelihood of frequent dental pain in the study population.
+
+all these estimates were covariate adjusted ,
+
+weighted for NHANES svy design 
+
+and cross validated using 10 folds
+
+estimates from imputed data sets were combined using rubins rules
+:::
+
+------------------------------------------------------------------------
+
+## [Results]{.title-deco .bg-g footer="flase"}
+
+::: sub
+Why the interventions only among absolute poor did not work?
+:::
+
+::: {.absolute left="-6%" top="10%" width="400px" height="auto"}
+![](img/res1.tiff)
+:::
+
+::: {.absolute .fragment right="0%" top="10%" width="650px" height="auto"}
+![](img/res2.tiff)
+:::
+
+::: notes
+I wanted to understand the intervention only among absolute poor did not work
+
+so I just simply count the outcome at each PIR value and ploted them
+
+This suggests that even though the proportion of frequent dental pain is higher among absolute poor.
+
+When we look at the whole study population majority contribution towards prevalence pool is coming from the individuals who are not at absolute poverty (Simple because their are the majority).
+
+Therefore, intervening only among absolute poor did not translate into population level improvement
+
+I think this phenomenon is similar for most oral health outcomes
+
+Therfore, I think it is very important to consider this in policy implementations
+:::
+
+------------------------------------------------------------------------
+
+## [Conclusions]{.lrb-b .bg-r .green .cen}
+
+<br/>
+
+🎯 Poverty act as a high level cause of frequent dental pain among US adults
+
+🎯 Interventions to reduce relative poverty might reduce the burden of frequent dental pain at population level
+
+<br><br>
+
+:::fragment
+[Thank you!!!]{.green .cen}
+:::
+
+:::{.f-15 .fragment}
+All the codes and data available at:
+<https://github.com/upulcooray/dental_pain_income_index>
+:::
+
+
